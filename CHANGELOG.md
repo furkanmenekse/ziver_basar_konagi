@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.5.5 - 2026-07-06
+
+- Updated the hero slogan copy and removed bold styling from the slogan.
+- Moved the hero experience links to the upper-right video area and softened their font weight.
+- Changed hero experience punctuation to commas except the final item.
+
 ## v0.5.4 - 2026-07-06
 
 - Added mixed serif, sans, and script typography to the hero and intro statements.

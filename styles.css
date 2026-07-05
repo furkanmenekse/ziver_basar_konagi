@@ -313,10 +313,11 @@ p {
 
 .hero-title {
   display: block;
-  max-width: 1040px;
+  max-width: 980px;
   font-family: var(--font-display);
-  font-size: clamp(86px, 10.4vw, 172px);
-  line-height: 0.82;
+  font-size: clamp(70px, 8.4vw, 140px);
+  font-weight: 400;
+  line-height: 0.88;
 }
 
 .hero-title-line {
@@ -325,30 +326,31 @@ p {
 
 .title-sans {
   font-family: var(--font-body);
-  font-weight: 650;
+  font-weight: 400;
 }
 
 .title-serif {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .title-script {
   display: block;
   margin-top: clamp(-4px, 0.8vw, 12px);
-  padding-left: clamp(70px, 11vw, 190px);
+  padding-left: clamp(52px, 8vw, 144px);
   font-family: var(--font-script);
-  font-size: clamp(62px, 8vw, 132px);
+  font-size: clamp(56px, 6.6vw, 112px);
   font-weight: 400;
   line-height: 0.76;
 }
 
 .hero-phrases {
+  position: absolute;
+  top: clamp(118px, 16vh, 182px);
+  right: 0;
   display: grid;
-  grid-column: 2;
   gap: clamp(14px, 2vw, 22px);
-  justify-self: end;
-  width: min(330px, 100%);
+  width: min(420px, 34vw);
 }
 
 .hero-phrases a {
@@ -360,7 +362,7 @@ p {
   background: transparent;
   font-family: var(--font-body);
   font-size: clamp(18px, 1.9vw, 29px);
-  font-weight: 760;
+  font-weight: 400;
   line-height: 1.02;
   transition:
     color 260ms ease,
@@ -1080,6 +1082,9 @@ blockquote {
   }
 
   .hero-phrases {
+    position: static;
+    top: auto;
+    right: auto;
     grid-column: 1;
     justify-self: start;
     width: min(540px, 100%);
