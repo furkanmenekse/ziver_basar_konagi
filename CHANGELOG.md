@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.5.2 - 2026-07-05
+
+- Removed the remaining local MP4 from the Pages artifact and referenced the contact-stage motion video from the external video URL.
+
 ## v0.5.1 - 2026-07-05
 
 - Moved large Seedance video assets out of the GitHub Pages artifact and referenced them from Fal CDN URLs.
