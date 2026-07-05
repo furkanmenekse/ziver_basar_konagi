@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.5.0 - 2026-07-05
+
+- Rebuilt the site as a Jägerhof-inspired editorial single-page hotel experience.
+- Added Turkish and English language versions.
+- Added a Seedance 2.0 drone approach hero video and reused the two improved Seedance hotel motion videos.
+- Added a richer local stock photo set for nature, rooms, dining, road, and atmosphere sections.
+- Added scroll-driven gallery transitions, hover image previews, parallax movement, a minimal loader, and theme-aware navigation.
+- Converted old section pages into lightweight redirects to the new single-page sections.
+
 ## v0.4.0 - 2026-07-05
 
 - Added Kling 2.5 generated motion videos from the real hotel exterior photos.
