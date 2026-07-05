@@ -154,6 +154,42 @@ a {
   padding: clamp(82px, 12vw, 148px) 0 150px clamp(20px, 5vw, 72px);
 }
 
+.hero-card {
+  position: absolute;
+  right: clamp(18px, 5vw, 72px);
+  top: clamp(120px, 18vw, 220px);
+  z-index: 2;
+  display: grid;
+  gap: 10px;
+  width: min(310px, calc(100% - 36px));
+  padding: 22px;
+  border: 1px solid rgba(255, 253, 247, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 253, 247, 0.14);
+  color: var(--white);
+  box-shadow: 0 20px 60px rgba(15, 16, 10, 0.22);
+  backdrop-filter: blur(18px);
+}
+
+.hero-card span {
+  color: var(--cream-strong);
+  font-size: 13px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.hero-card strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.12;
+}
+
+.hero-card a {
+  color: var(--cream-strong);
+  font-weight: 850;
+}
+
 .hero-logo {
   width: clamp(170px, 18vw, 260px);
   margin-bottom: clamp(52px, 8vw, 92px);
@@ -341,6 +377,74 @@ h3 {
   object-fit: cover;
 }
 
+.experience-section {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.82fr) 1.18fr;
+  align-items: center;
+  gap: clamp(28px, 6vw, 86px);
+  width: min(1180px, calc(100% - 36px));
+  margin: 0 auto;
+  padding-bottom: clamp(72px, 10vw, 128px);
+}
+
+.experience-copy p:not(.section-kicker) {
+  color: rgba(34, 34, 24, 0.72);
+  font-size: 18px;
+}
+
+.mosaic-gallery {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+}
+
+.mosaic-gallery img {
+  width: 100%;
+  height: 100%;
+  min-height: 210px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 12px 26px rgba(34, 34, 24, 0.08);
+}
+
+.mosaic-gallery .tall {
+  grid-row: span 2;
+  min-height: 520px;
+}
+
+.amenity-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  width: min(1180px, calc(100% - 36px));
+  margin: 0 auto clamp(72px, 10vw, 128px);
+  overflow: hidden;
+  border: 1px solid rgba(63, 63, 43, 0.14);
+  border-radius: 8px;
+  background: rgba(63, 63, 43, 0.16);
+}
+
+.amenity-strip div {
+  min-height: 150px;
+  padding: 24px;
+  background: var(--white);
+}
+
+.amenity-strip span {
+  display: block;
+  margin-bottom: 32px;
+  color: var(--gold);
+  font-weight: 850;
+}
+
+.amenity-strip strong {
+  display: block;
+  color: var(--olive);
+  font-size: 18px;
+  line-height: 1.2;
+}
+
 .preview-card::after {
   content: "";
   position: absolute;
@@ -422,6 +526,64 @@ h3 {
   box-shadow: 0 12px 26px rgba(34, 34, 24, 0.08);
 }
 
+.room-card > img {
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.check-list {
+  display: grid;
+  gap: 10px;
+  margin: 22px 0 8px;
+  padding: 0;
+  list-style: none;
+  color: rgba(34, 34, 24, 0.72);
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 24px;
+}
+
+.check-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.58em;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--gold);
+}
+
+.room-cta {
+  display: grid;
+  grid-template-columns: 0.9fr 1fr;
+  align-items: center;
+  gap: clamp(24px, 5vw, 72px);
+  width: min(1180px, calc(100% - 36px));
+  margin: 0 auto clamp(54px, 8vw, 92px);
+  padding: clamp(20px, 4vw, 34px);
+  border-radius: 8px;
+  background: var(--olive);
+  color: var(--white);
+}
+
+.room-cta img {
+  width: 100%;
+  height: clamp(300px, 36vw, 460px);
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.room-cta p:not(.section-kicker) {
+  color: rgba(255, 253, 247, 0.78);
+  font-size: 18px;
+}
+
 .text-link {
   display: inline-flex;
   margin-top: 8px;
@@ -486,6 +648,23 @@ h3 {
   overflow-wrap: anywhere;
 }
 
+.contact-note {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.82fr) 1fr;
+  gap: clamp(24px, 5vw, 72px);
+  width: min(1180px, calc(100% - 36px));
+  margin: 0 auto clamp(54px, 8vw, 92px);
+  padding: clamp(32px, 5vw, 54px);
+  border-radius: 8px;
+  background: var(--cream-strong);
+}
+
+.contact-note p:last-child {
+  align-self: end;
+  color: rgba(34, 34, 24, 0.72);
+  font-size: 18px;
+}
+
 .map-section {
   display: grid;
   grid-template-columns: 1fr minmax(280px, 0.75fr);
@@ -511,6 +690,51 @@ h3 {
   color: var(--olive);
   font-size: 20px;
   font-weight: 850;
+}
+
+.floating-contact {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 30;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid rgba(63, 63, 43, 0.14);
+  border-radius: 8px;
+  background: rgba(247, 238, 219, 0.92);
+  box-shadow: 0 16px 44px rgba(34, 34, 24, 0.16);
+  backdrop-filter: blur(18px);
+}
+
+.floating-contact a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 6px;
+  background: var(--olive);
+  color: var(--cream-strong);
+  font-weight: 850;
+}
+
+.floating-contact a:first-child {
+  background: var(--gold);
+  color: var(--white);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (max-width: 900px) {
@@ -539,8 +763,20 @@ h3 {
   .feature-grid,
   .preview-grid,
   .value-grid,
-  .contact-grid {
+  .contact-grid,
+  .experience-section,
+  .amenity-strip,
+  .room-cta,
+  .contact-note {
     grid-template-columns: 1fr;
+  }
+
+  .mosaic-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mosaic-gallery .tall {
+    min-height: 430px;
   }
 
   .preview-card.large {
@@ -591,6 +827,14 @@ h3 {
     width: 100%;
   }
 
+  .hero-card {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: calc(100% - 36px);
+    margin: -132px auto 28px;
+  }
+
   .feature-card,
   .value-grid article,
   .contact-grid article {
@@ -600,5 +844,32 @@ h3 {
   .preview-card,
   .preview-card.large {
     min-height: 320px;
+  }
+
+  .mosaic-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .mosaic-gallery .tall {
+    grid-row: auto;
+    min-height: 320px;
+  }
+
+  .amenity-strip div {
+    min-height: 128px;
+  }
+
+  .room-card > img {
+    min-height: 270px;
+  }
+
+  .floating-contact {
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+  }
+
+  .floating-contact a {
+    flex: 1;
   }
 }
