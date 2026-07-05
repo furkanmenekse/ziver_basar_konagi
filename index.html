@@ -27,7 +27,17 @@
 
     <main>
       <section class="hero" aria-label="Ziver Başar Konağı">
-        <img class="hero-photo" src="assets/photos/night.jpeg" alt="Ziver Başar Konağı gece görünümü" />
+        <video
+          class="hero-photo hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="assets/photos/night.jpeg"
+          aria-label="Ziver Başar Konağı gece görünümü"
+        >
+          <source src="assets/videos/zbk-night-hero.mp4" type="video/mp4" />
+        </video>
         <div class="hero-shade"></div>
         <div class="hero-content">
           <img class="hero-logo" src="assets/logos/zbk-logotype-white.svg" alt="Ziver Başar Konağı" />
@@ -96,7 +106,9 @@
         </div>
         <div class="mosaic-gallery" aria-label="Konağın atmosferi">
           <img class="tall" src="assets/photos/mountain-view.jpg" alt="Yayla manzarası" />
-          <img src="assets/photos/day.jpeg" alt="Ziver Başar Konağı gündüz görünümü" />
+          <video autoplay muted loop playsinline poster="assets/photos/day.jpeg" aria-label="Ziver Başar Konağı gündüz görünümü">
+            <source src="assets/videos/zbk-day-dolly.mp4" type="video/mp4" />
+          </video>
           <img src="assets/photos/breakfast.jpg" alt="Kahvaltı ve konaklama atmosferi" />
         </div>
       </section>

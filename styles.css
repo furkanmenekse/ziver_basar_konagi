@@ -139,7 +139,8 @@ a {
   inset: 0;
 }
 
-.hero-photo {
+.hero-photo,
+.page-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -404,7 +405,8 @@ h3 {
   gap: 12px;
 }
 
-.mosaic-gallery img {
+.mosaic-gallery img,
+.mosaic-gallery video {
   width: 100%;
   height: 100%;
   min-height: 210px;
@@ -482,6 +484,7 @@ h3 {
 }
 
 .page-hero img,
+.page-hero video,
 .contact-hero img {
   width: 100%;
   height: clamp(320px, 42vw, 540px);
@@ -505,7 +508,8 @@ h3 {
   padding-bottom: clamp(72px, 9vw, 120px);
 }
 
-.wide-photo img {
+.wide-photo img,
+.wide-photo video {
   width: 100%;
   height: clamp(340px, 46vw, 620px);
   object-fit: cover;
@@ -718,6 +722,29 @@ h3 {
   color: rgba(34, 34, 24, 0.68);
 }
 
+.route-video-section {
+  display: grid;
+  grid-template-columns: minmax(320px, 1.08fr) minmax(280px, 0.92fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+  width: min(1180px, calc(100% - 36px));
+  margin: 0 auto clamp(44px, 6vw, 76px);
+}
+
+.route-video-section video {
+  width: 100%;
+  height: clamp(320px, 40vw, 520px);
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  background: var(--olive-deep);
+}
+
+.route-video-section p:not(.section-kicker) {
+  color: rgba(34, 34, 24, 0.72);
+  font-size: 18px;
+}
+
 .map-section {
   display: grid;
   grid-template-columns: minmax(320px, 1.1fr) minmax(280px, 0.9fr);
@@ -821,6 +848,7 @@ h3 {
   .page-hero,
   .contact-hero,
   .room-card,
+  .route-video-section,
   .map-section,
   .site-footer {
     grid-template-columns: 1fr;

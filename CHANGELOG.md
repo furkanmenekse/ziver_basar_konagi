@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.4.0 - 2026-07-05
+
+- Added Kling 2.5 generated motion videos from the real hotel exterior photos.
+- Replaced key static exterior areas with autoplaying silent MP4 loops.
+- Added a cinematic route/hyperlapse video block to the contact page.
+- Added lightweight visibility-based playback handling for embedded videos.
+
 ## v0.3.1 - 2026-07-05
 
 - Added `.nojekyll` to force GitHub Pages to publish the static files directly.
