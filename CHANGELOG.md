@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.5.3 - 2026-07-05
+
+- Shortened the opening loader and decoupled it from external video loading.
+- Refined the Jägerhof-inspired editorial layout with lighter navigation, less boxed hero links, larger quiet spacing, and calmer typography.
+- Added stronger horizontal and vertical scroll drift across key visual elements.
+- Rebalanced the rooms and contact sections, including a more prominent Google Maps layout.
+
 ## v0.5.2 - 2026-07-05
 
 - Removed the remaining local MP4 from the Pages artifact and referenced the contact-stage motion video from the external video URL.

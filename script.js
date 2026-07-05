@@ -7,16 +7,34 @@ const gallerySteps = document.querySelectorAll("[data-gallery-step]");
 const galleryImages = document.querySelectorAll("[data-gallery-image]");
 const hoverList = document.querySelector("[data-hover-list]");
 const hoverImage = document.querySelector("[data-hover-image]");
-const parallaxItems = document.querySelectorAll(".parallax-media");
+const driftItems = document.querySelectorAll(
+  ".hero-content, .gallery-visual, .split-media, .broken-large, .broken-small, .image-ribbon img, .contact-map video, .contact-map iframe, .quote-video"
+);
 
 body.classList.add("is-loading", "nav-dark");
 
-window.addEventListener("load", () => {
-  window.setTimeout(() => {
-    body.classList.remove("is-loading");
-    body.classList.add("is-ready");
-  }, 520);
-});
+const finishLoader = () => {
+  body.classList.remove("is-loading");
+  body.classList.add("is-ready");
+};
+
+document.addEventListener("DOMContentLoaded", () => window.setTimeout(finishLoader, 260), { once: true });
+window.setTimeout(finishLoader, 950);
+
+const setNavTheme = (theme) => {
+  body.classList.toggle("nav-dark", theme === "dark");
+  body.classList.toggle("nav-light", theme !== "dark");
+};
+
+const updateNavThemeFromPoint = () => {
+  if (!nav) return;
+
+  const navHeight = nav.getBoundingClientRect().height || 76;
+  const probeY = Math.min(window.innerHeight - 1, Math.max(navHeight + 12, window.innerHeight * 0.14));
+  const probe = document.elementFromPoint(window.innerWidth / 2, probeY);
+  const scene = probe?.closest?.("[data-theme]");
+  setNavTheme(scene?.dataset.theme || "light");
+};
 
 const setActiveGallery = (index) => {
   gallerySteps.forEach((step) => {
@@ -37,8 +55,7 @@ if ("IntersectionObserver" in window) {
       if (!visible || !nav) return;
 
       const theme = visible.target.dataset.theme;
-      body.classList.toggle("nav-dark", theme === "dark");
-      body.classList.toggle("nav-light", theme !== "dark");
+      setNavTheme(theme);
     },
     { threshold: [0.18, 0.38, 0.58] }
   );
@@ -92,6 +109,9 @@ if ("IntersectionObserver" in window) {
   motionVideos.forEach((video) => video.play().catch(() => {}));
 }
 
+document.addEventListener("DOMContentLoaded", () => window.setTimeout(updateNavThemeFromPoint, 360), { once: true });
+window.addEventListener("hashchange", () => window.setTimeout(updateNavThemeFromPoint, 180));
+
 if (hoverList && hoverImage) {
   hoverList.addEventListener("pointermove", (event) => {
     if (event.target instanceof HTMLElement) {
@@ -115,11 +135,18 @@ let ticking = false;
 const updateParallax = () => {
   const viewport = window.innerHeight || 1;
 
-  parallaxItems.forEach((item) => {
+  driftItems.forEach((item, index) => {
     const rect = item.getBoundingClientRect();
     const progress = (rect.top + rect.height / 2 - viewport / 2) / viewport;
-    const offset = Math.max(-1, Math.min(1, progress)) * -28;
-    item.style.transform = `translate3d(0, ${offset}px, 0)`;
+    const clamped = Math.max(-1, Math.min(1, progress));
+    const direction = index % 2 === 0 ? -1 : 1;
+    const isCompact = window.innerWidth < 720;
+    const xStrength = isCompact ? 0 : item.classList.contains("hero-content") ? 18 : 34;
+    const yStrength = isCompact ? 20 : item.classList.contains("quote-video") ? 18 : 46;
+    const x = clamped * direction * xStrength;
+    const y = clamped * -yStrength;
+
+    item.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
   });
 
   ticking = false;
@@ -128,6 +155,8 @@ const updateParallax = () => {
 window.addEventListener(
   "scroll",
   () => {
+    updateNavThemeFromPoint();
+
     if (!ticking && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       window.requestAnimationFrame(updateParallax);
       ticking = true;
