@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.5.1 - 2026-07-05
+
+- Moved large Seedance video assets out of the GitHub Pages artifact and referenced them from Fal CDN URLs.
+- Reduced the deployed site package size so GitHub Pages can publish the v0.5 redesign.
+
 ## v0.5.0 - 2026-07-05
 
 - Rebuilt the site as a Jägerhof-inspired editorial single-page hotel experience.
