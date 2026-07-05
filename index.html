@@ -9,6 +9,12 @@
       content="Giresun Kulakkaya Yaylası'nda ahşap ve taş mimarisiyle sakin, sıcak ve doğaya yakın butik konaklama deneyimi."
     />
     <link rel="icon" href="assets/logos/zbk-logotype-color-1.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -50,9 +56,12 @@
         <div class="hero-wash"></div>
         <div class="hero-content">
           <p class="micro">Giresun / Kulakkaya Yaylası</p>
-          <h1>
-            <span>Yaylada,</span>
-            <span>eviniz.</span>
+          <h1 class="hero-title">
+            <span class="hero-title-line">
+              <span class="title-sans">Yaylada</span>
+              <span class="title-serif">eviniz,</span>
+            </span>
+            <span class="title-script">Kulakkaya'da.</span>
           </h1>
           <div class="hero-phrases" aria-label="Konağın deneyim alanları">
             <a href="#doga">Doğada.</a>
@@ -70,8 +79,12 @@
       <section id="konak" class="intro-panel scene dark-section" data-theme="dark">
         <div class="section-shell intro-grid">
           <p class="micro">Ziver Başar Konağı</p>
-          <h2>
-            Ahşap sıcaklığı, taş dokusu ve yayla sessizliği aynı çatı altında.
+          <h2 class="mixed-statement">
+            <span class="statement-serif">Yaylada odanızı bulun,</span>
+            <span class="statement-sans">sofranın sıcaklığını</span>
+            <span class="statement-serif">hissedin ve</span>
+            <span class="statement-sans">konağın hikayesi</span>
+            <span class="statement-serif">sizinle tamamlansın.</span>
           </h2>
           <div class="intro-copy">
             <p>
@@ -84,58 +97,37 @@
         </div>
       </section>
 
-      <section class="scroll-gallery scene" data-theme="light" aria-label="Konağı keşfet">
-        <div class="gallery-sticky">
-          <div class="gallery-visual">
-            <img class="is-active" src="assets/photos/day.jpeg" alt="Ziver Başar Konağı gündüz görünümü" data-gallery-image="0" />
-            <img src="assets/stock/forest-path.jpg" alt="Yaylada orman yolu" data-gallery-image="1" />
-            <img src="assets/stock/mountain-ridge.jpg" alt="Dağ manzarası" data-gallery-image="2" />
-            <img src="assets/stock/cozy-bed.jpg" alt="Sıcak oda atmosferi" data-gallery-image="3" />
-            <img src="assets/stock/hotel-lobby.jpg" alt="Otel ortak alan atmosferi" data-gallery-image="4" />
-            <img src="assets/stock/breakfast-table.jpg" alt="Kahvaltı sofrası" data-gallery-image="5" />
-            <img src="assets/stock/mountain-road.jpg" alt="Yayla yolu" data-gallery-image="6" />
-          </div>
-          <div class="gallery-copy">
-            <p class="micro">Deneyim</p>
-            <h2>Konak, çevresiyle birlikte yaşar.</h2>
-          </div>
+      <section class="experience-slider scene" data-theme="dark" aria-label="Konağı keşfet" data-experience-slider>
+        <div class="slider-track" data-slider-track>
+          <figure class="slider-card">
+            <img src="assets/stock/breakfast-table.jpg" alt="Yayla kahvaltısı ve sofra detayı" />
+          </figure>
+          <figure class="slider-card slider-card-wide">
+            <img src="assets/photos/day.jpeg" alt="Ziver Başar Konağı gündüz görünümü" />
+            <a class="slider-card-button" href="#iletisim">Konum ve yol tarifi</a>
+          </figure>
+          <figure class="slider-card">
+            <img src="assets/stock/forest-path.jpg" alt="Kulakkaya çevresinde orman yolu" />
+          </figure>
+          <figure class="slider-card slider-card-wide">
+            <img src="assets/photos/night.jpeg" alt="Ziver Başar Konağı gece görünümü" />
+            <a class="slider-card-button" href="#odalar">Odaları konuşalım</a>
+          </figure>
+          <figure class="slider-card">
+            <img src="assets/stock/cozy-bed.jpg" alt="Sıcak oda atmosferi" />
+          </figure>
         </div>
-        <div class="gallery-steps">
-          <article class="gallery-step is-active" data-gallery-step="0">
-            <span>01</span>
-            <h3>Köy içi konum</h3>
-            <p>Kulakkaya'da kolay ulaşılabilir, sakin ve karakterli bir başlangıç noktası.</p>
-          </article>
-          <article class="gallery-step" data-gallery-step="1">
-            <span>02</span>
-            <h3>Yayla havası</h3>
-            <p>Güne serinlikle başlanan, akşamı sıcak ışıkla bitiren bir atmosfer.</p>
-          </article>
-          <article class="gallery-step" data-gallery-step="2">
-            <span>03</span>
-            <h3>Yol ve manzara</h3>
-            <p>Giresun'un yükseklerine çıkarken rota da deneyimin bir parçası olur.</p>
-          </article>
-          <article class="gallery-step" data-gallery-step="3">
-            <span>04</span>
-            <h3>Sade odalar</h3>
-            <p>Oda bilgisi ve müsaitlik, tarihinize göre doğrudan paylaşılır.</p>
-          </article>
-          <article class="gallery-step" data-gallery-step="4">
-            <span>05</span>
-            <h3>Ortak alanlar</h3>
-            <p>Konak dili; ahşap, taş, sıcak ışık ve sakin bekleme anlarıyla tamamlanır.</p>
-          </article>
-          <article class="gallery-step" data-gallery-step="5">
-            <span>06</span>
-            <h3>Sofra ritmi</h3>
-            <p>Yayla günlerinin en güzel tarafı, acele etmeden kurulan sofralardır.</p>
-          </article>
-          <article class="gallery-step" data-gallery-step="6">
-            <span>07</span>
-            <h3>Varış hissi</h3>
-            <p>Yolun sonunda, ışığı ve dokusuyla kendini belli eden bir konak.</p>
-          </article>
+        <div class="slider-copy">
+          <p class="micro">Deneyim</p>
+          <h2>Küçük bir yayla konağı; yol, oda, sofra ve manzarayla birlikte yaşar.</h2>
+          <p>
+            Kulakkaya'nın köy içi mevkiinde konumlanan konak, doğaya yakın ve
+            gösterişten uzak bir konaklama ritmi kurar.
+          </p>
+          <div class="slider-controls" aria-label="Galeri kontrolleri">
+            <button type="button" data-slider-prev aria-label="Önceki görsel">‹</button>
+            <button type="button" data-slider-next aria-label="Sonraki görsel">›</button>
+          </div>
         </div>
       </section>
 

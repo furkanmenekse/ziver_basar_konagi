@@ -9,6 +9,12 @@
       content="A warm, quiet boutique stay in Giresun's Kulakkaya Highland, shaped by timber, stone, and mountain air."
     />
     <link rel="icon" href="../assets/logos/zbk-logotype-color-1.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
@@ -50,9 +56,12 @@
         <div class="hero-wash"></div>
         <div class="hero-content">
           <p class="micro">Giresun / Kulakkaya Highland</p>
-          <h1>
-            <span>Your</span>
-            <span>highland home.</span>
+          <h1 class="hero-title">
+            <span class="hero-title-line">
+              <span class="title-sans">Your</span>
+              <span class="title-serif">Highland Home,</span>
+            </span>
+            <span class="title-script">at Kulakkaya.</span>
           </h1>
           <div class="hero-phrases" aria-label="Hotel experience areas">
             <a href="#doga">In Nature.</a>
@@ -70,8 +79,12 @@
       <section id="konak" class="intro-panel scene dark-section" data-theme="dark">
         <div class="section-shell intro-grid">
           <p class="micro">Ziver Başar Konağı</p>
-          <h2>
-            Timber warmth, stone texture, and highland quiet under one roof.
+          <h2 class="mixed-statement">
+            <span class="statement-serif">Find your room in the highlands,</span>
+            <span class="statement-sans">feel the warmth</span>
+            <span class="statement-serif">of the table and let</span>
+            <span class="statement-sans">our story</span>
+            <span class="statement-serif">become part of yours.</span>
           </h2>
           <div class="intro-copy">
             <p>
@@ -84,58 +97,37 @@
         </div>
       </section>
 
-      <section class="scroll-gallery scene" data-theme="light" aria-label="Explore the hotel">
-        <div class="gallery-sticky">
-          <div class="gallery-visual">
-            <img class="is-active" src="../assets/photos/day.jpeg" alt="Ziver Başar Konağı daylight exterior" data-gallery-image="0" />
-            <img src="../assets/stock/forest-path.jpg" alt="Forest path in the highlands" data-gallery-image="1" />
-            <img src="../assets/stock/mountain-ridge.jpg" alt="Mountain landscape" data-gallery-image="2" />
-            <img src="../assets/stock/cozy-bed.jpg" alt="Warm room atmosphere" data-gallery-image="3" />
-            <img src="../assets/stock/hotel-lobby.jpg" alt="Hotel common area atmosphere" data-gallery-image="4" />
-            <img src="../assets/stock/breakfast-table.jpg" alt="Breakfast table" data-gallery-image="5" />
-            <img src="../assets/stock/mountain-road.jpg" alt="Highland road" data-gallery-image="6" />
-          </div>
-          <div class="gallery-copy">
-            <p class="micro">Experience</p>
-            <h2>The hotel lives with its surroundings.</h2>
-          </div>
+      <section class="experience-slider scene" data-theme="dark" aria-label="Explore the hotel" data-experience-slider>
+        <div class="slider-track" data-slider-track>
+          <figure class="slider-card">
+            <img src="../assets/stock/breakfast-table.jpg" alt="Highland breakfast and table detail" />
+          </figure>
+          <figure class="slider-card slider-card-wide">
+            <img src="../assets/photos/day.jpeg" alt="Ziver Başar Konağı daylight exterior" />
+            <a class="slider-card-button" href="#iletisim">Location & directions</a>
+          </figure>
+          <figure class="slider-card">
+            <img src="../assets/stock/forest-path.jpg" alt="Forest path around Kulakkaya" />
+          </figure>
+          <figure class="slider-card slider-card-wide">
+            <img src="../assets/photos/night.jpeg" alt="Ziver Başar Konağı night exterior" />
+            <a class="slider-card-button" href="#odalar">Talk about rooms</a>
+          </figure>
+          <figure class="slider-card">
+            <img src="../assets/stock/cozy-bed.jpg" alt="Warm room atmosphere" />
+          </figure>
         </div>
-        <div class="gallery-steps">
-          <article class="gallery-step is-active" data-gallery-step="0">
-            <span>01</span>
-            <h3>Village location</h3>
-            <p>An accessible, quiet, and characterful starting point in Kulakkaya.</p>
-          </article>
-          <article class="gallery-step" data-gallery-step="1">
-            <span>02</span>
-            <h3>Highland air</h3>
-            <p>An atmosphere that begins with cool mornings and ends in warm evening light.</p>
-          </article>
-          <article class="gallery-step" data-gallery-step="2">
-            <span>03</span>
-            <h3>Road and view</h3>
-            <p>As you rise into Giresun's highlands, the route becomes part of the stay.</p>
-          </article>
-          <article class="gallery-step" data-gallery-step="3">
-            <span>04</span>
-            <h3>Simple rooms</h3>
-            <p>Room details and availability are shared directly according to your dates.</p>
-          </article>
-          <article class="gallery-step" data-gallery-step="4">
-            <span>05</span>
-            <h3>Shared spaces</h3>
-            <p>The mood is completed by timber, stone, warm light, and quiet pauses.</p>
-          </article>
-          <article class="gallery-step" data-gallery-step="5">
-            <span>06</span>
-            <h3>Table rhythm</h3>
-            <p>The best highland days often begin around an unhurried table.</p>
-          </article>
-          <article class="gallery-step" data-gallery-step="6">
-            <span>07</span>
-            <h3>Arrival feeling</h3>
-            <p>At the end of the road, the hotel is defined by its light and texture.</p>
-          </article>
+        <div class="slider-copy">
+          <p class="micro">Experience</p>
+          <h2>A small highland hotel shaped by the road, rooms, table, and view.</h2>
+          <p>
+            Set in the village area of Kulakkaya, the hotel creates a stay that
+            feels close to nature and far from excess.
+          </p>
+          <div class="slider-controls" aria-label="Gallery controls">
+            <button type="button" data-slider-prev aria-label="Previous image">‹</button>
+            <button type="button" data-slider-next aria-label="Next image">›</button>
+          </div>
         </div>
       </section>
 

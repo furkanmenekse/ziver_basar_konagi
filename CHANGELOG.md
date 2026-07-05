@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.5.4 - 2026-07-06
+
+- Added mixed serif, sans, and script typography to the hero and intro statements.
+- Replaced the former step-based experience section with a Jägerhof-inspired horizontal image slider.
+- Added slider controls and responsive behavior for desktop and mobile layouts.
+
 ## v0.5.3 - 2026-07-05
 
 - Shortened the opening loader and decoupled it from external video loading.

@@ -7,8 +7,9 @@ const gallerySteps = document.querySelectorAll("[data-gallery-step]");
 const galleryImages = document.querySelectorAll("[data-gallery-image]");
 const hoverList = document.querySelector("[data-hover-list]");
 const hoverImage = document.querySelector("[data-hover-image]");
+const experienceSliders = document.querySelectorAll("[data-experience-slider]");
 const driftItems = document.querySelectorAll(
-  ".hero-content, .gallery-visual, .split-media, .broken-large, .broken-small, .image-ribbon img, .contact-map video, .contact-map iframe, .quote-video"
+  ".hero-content, .split-media, .broken-large, .broken-small, .image-ribbon img, .contact-map video, .contact-map iframe, .quote-video"
 );
 
 body.classList.add("is-loading", "nav-dark");
@@ -30,9 +31,11 @@ const updateNavThemeFromPoint = () => {
   if (!nav) return;
 
   const navHeight = nav.getBoundingClientRect().height || 76;
-  const probeY = Math.min(window.innerHeight - 1, Math.max(navHeight + 12, window.innerHeight * 0.14));
-  const probe = document.elementFromPoint(window.innerWidth / 2, probeY);
-  const scene = probe?.closest?.("[data-theme]");
+  const probeY = Math.min(window.innerHeight - 1, Math.max(navHeight + 36, window.innerHeight * 0.16));
+  const scene = document
+    .elementsFromPoint(window.innerWidth / 2, probeY)
+    .map((element) => element.closest?.("[data-theme]"))
+    .find((element) => element && !nav.contains(element));
   setNavTheme(scene?.dataset.theme || "light");
 };
 
@@ -129,6 +132,24 @@ if (hoverList && hoverImage) {
     hoverImage.classList.remove("is-visible");
   });
 }
+
+experienceSliders.forEach((slider) => {
+  const track = slider.querySelector("[data-slider-track]");
+  const previous = slider.querySelector("[data-slider-prev]");
+  const next = slider.querySelector("[data-slider-next]");
+
+  if (!track || !previous || !next) return;
+
+  const scrollAmount = () => Math.max(320, track.clientWidth * 0.58);
+
+  previous.addEventListener("click", () => {
+    track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+  });
+
+  next.addEventListener("click", () => {
+    track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+  });
+});
 
 let ticking = false;
 
