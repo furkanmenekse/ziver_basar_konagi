@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.5.6 - 2026-07-06
+
+- Updated the main statement copy from "bulun" to "seçin" and aligned the English wording.
+
 ## v0.5.5 - 2026-07-06
 
 - Updated the hero slogan copy and removed bold styling from the slogan.
