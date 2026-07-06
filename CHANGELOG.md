@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.5.12 - 2026-07-06
+
+- Retried the GitHub Pages deployment after a transient Pages publish failure.
+
 ## v0.5.11 - 2026-07-06
 
 - Changed the header Mail shortcut to scroll to the visible email address instead of opening a mail app.
