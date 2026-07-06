@@ -777,14 +777,15 @@ p {
 .split-copy h2,
 .broken-copy h2,
 .contact-copy h2 {
-  font-size: clamp(42px, 5.1vw, 78px);
-  line-height: 0.96;
+  margin-bottom: clamp(18px, 2.4vw, 34px);
+  font-size: clamp(40px, 4.75vw, 74px);
+  line-height: 1.07;
 }
 
 .split-copy p:not(.micro) {
   max-width: 640px;
   font-size: clamp(20px, 1.65vw, 27px);
-  line-height: 1.36;
+  line-height: 1.46;
 }
 
 .rooms-showcase {
@@ -809,13 +810,13 @@ p {
 
 .rooms-heading h2 {
   max-width: 560px;
+  margin-bottom: clamp(18px, 2vw, 28px);
   font-size: clamp(38px, 4.7vw, 74px);
-  line-height: 0.98;
+  line-height: 1.05;
 }
 
 .rooms-heading p:not(.micro) {
   max-width: 430px;
-  margin-top: 24px;
   color: rgba(255, 253, 248, 0.68);
 }
 
@@ -823,16 +824,35 @@ p {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(16px, 2vw, 30px);
+  perspective: 1200px;
 }
 
 .room-card {
+  --room-x: 0px;
+  --room-y: 0px;
+  --room-rotate: 0deg;
+  --room-img-scale: 1.02;
   display: grid;
   gap: 12px;
   margin: 0;
+  opacity: 0;
+  transform:
+    translate3d(var(--room-x), calc(var(--room-y) + 48px), 0)
+    rotate(var(--room-rotate));
+  transition:
+    opacity 900ms ease,
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .room-card:nth-child(2) {
   margin-top: clamp(42px, 7vw, 110px);
+}
+
+.room-card.is-visible {
+  opacity: 1;
+  transform:
+    translate3d(var(--room-x), var(--room-y), 0)
+    rotate(var(--room-rotate));
 }
 
 .room-card-wide {
@@ -843,6 +863,10 @@ p {
   width: 100%;
   height: clamp(290px, 28vw, 500px);
   object-fit: cover;
+  transform: scale(var(--room-img-scale));
+  transition:
+    filter 700ms ease,
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .room-card-tall img {
@@ -859,6 +883,20 @@ p {
   font-size: clamp(17px, 1.25vw, 22px);
   font-weight: 300;
   line-height: 1.36;
+  transform: translateX(0);
+  transition:
+    color 360ms ease,
+    transform 360ms ease;
+}
+
+.room-card:hover img {
+  filter: saturate(1.08) contrast(1.02);
+  transform: scale(1.075);
+}
+
+.room-card:hover figcaption {
+  color: var(--white);
+  transform: translateX(10px);
 }
 
 .broken-grid {
@@ -880,6 +918,8 @@ p {
 
 .broken-copy p {
   max-width: 540px;
+  font-size: clamp(19px, 1.45vw, 24px);
+  line-height: 1.48;
 }
 
 .broken-large {
@@ -891,12 +931,12 @@ p {
 }
 
 .broken-small {
-  grid-column: 2 / 6;
+  grid-column: 1 / 6;
   grid-row: 2;
   width: 100%;
   height: clamp(250px, 30vw, 430px);
   object-fit: cover;
-  margin-top: -6vw;
+  margin-top: clamp(16px, 3vw, 40px);
 }
 
 .scroll-grow {
@@ -1038,14 +1078,53 @@ blockquote {
 
 .testimonial-list {
   display: grid;
-  border-top: 1px solid var(--line);
+  gap: clamp(18px, 2.4vw, 32px);
 }
 
 .testimonial-card {
+  --testimonial-y: 0px;
+  --testimonial-x: 0px;
   display: grid;
-  gap: 24px;
-  padding: clamp(28px, 4.5vw, 66px) 0;
+  grid-template-columns: clamp(92px, 11vw, 154px) minmax(0, 1fr);
+  gap: clamp(18px, 2.8vw, 42px);
+  align-items: center;
+  padding: clamp(20px, 3vw, 38px) 0;
+  border-top: 1px solid var(--line);
+  opacity: 0;
+  transform: translate3d(var(--testimonial-x), calc(var(--testimonial-y) + 34px), 0);
+  transition:
+    opacity 760ms ease,
+    transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.testimonial-card.is-visible {
+  opacity: 1;
+  transform: translate3d(var(--testimonial-x), var(--testimonial-y), 0);
+}
+
+.testimonial-card:last-child {
   border-bottom: 1px solid var(--line);
+}
+
+.testimonial-photo {
+  margin: 0;
+  overflow: hidden;
+}
+
+.testimonial-photo img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: saturate(0.88) contrast(0.95);
+  transform: scale(1.02);
+  transition:
+    filter 600ms ease,
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.testimonial-card:hover .testimonial-photo img {
+  filter: saturate(1.04) contrast(1);
+  transform: scale(1.075);
 }
 
 .testimonial-card blockquote {
@@ -1053,19 +1132,27 @@ blockquote {
   margin: 0;
   color: var(--ink);
   font-family: var(--font-text);
-  font-size: clamp(31px, 3.2vw, 54px);
+  font-size: clamp(24px, 2.35vw, 38px);
   font-weight: 300;
-  line-height: 1.04;
+  line-height: 1.22;
   text-align: left;
 }
 
 .testimonial-card p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
   margin: 0;
+  margin-top: clamp(18px, 2vw, 26px);
   color: var(--rust);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+.testimonial-card p span + span {
+  color: var(--muted);
 }
 
 .atmosphere-section {
@@ -1251,10 +1338,13 @@ blockquote {
 .hero-content,
 .gallery-visual,
 .split-media,
+.room-card,
 .broken-large,
 .broken-small,
 .grow-frame img,
 .atmosphere-card img,
+.testimonial-card,
+.testimonial-photo img,
 .contact-map video,
 .contact-map iframe,
 .quote-video {
@@ -1272,6 +1362,16 @@ blockquote {
 .reveal-block.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.testimonial-card.reveal-block {
+  opacity: 0;
+  transform: translate3d(var(--testimonial-x), calc(var(--testimonial-y) + 34px), 0);
+}
+
+.testimonial-card.reveal-block.is-visible {
+  opacity: 1;
+  transform: translate3d(var(--testimonial-x), var(--testimonial-y), 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1390,6 +1490,10 @@ blockquote {
     margin-top: 8px;
   }
 
+  .room-card:nth-child(2) {
+    margin-top: 0;
+  }
+
   .rooms-showcase {
     padding-top: clamp(190px, 26vw, 260px);
   }
@@ -1405,6 +1509,10 @@ blockquote {
   .testimonial-heading {
     position: relative;
     top: auto;
+  }
+
+  .testimonial-card {
+    grid-template-columns: clamp(88px, 22vw, 132px) minmax(0, 1fr);
   }
 
   .atmosphere-intro,
@@ -1543,11 +1651,19 @@ blockquote {
   }
 
   .testimonial-card blockquote {
-    font-size: clamp(29px, 9vw, 44px);
+    font-size: clamp(22px, 6.5vw, 34px);
   }
 
   .testimonials {
     padding-top: 190px;
+  }
+
+  .testimonial-card {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-photo {
+    width: min(180px, 44vw);
   }
 
   .footer {

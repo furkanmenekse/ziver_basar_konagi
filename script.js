@@ -7,6 +7,8 @@ const gallerySteps = document.querySelectorAll("[data-gallery-step]");
 const galleryImages = document.querySelectorAll("[data-gallery-image]");
 const experienceSliders = document.querySelectorAll("[data-experience-slider]");
 const growFrames = document.querySelectorAll("[data-grow-image]");
+const roomCards = document.querySelectorAll("[data-room-card]");
+const testimonialCards = document.querySelectorAll("[data-testimonial-card]");
 const driftItems = document.querySelectorAll(
   ".hero-content, .split-media, .broken-large, .broken-small, .atmosphere-card img, .contact-map video, .contact-map iframe, .quote-video"
 );
@@ -77,6 +79,7 @@ if ("IntersectionObserver" in window) {
   );
 
   revealBlocks.forEach((block) => revealObserver.observe(block));
+  roomCards.forEach((card) => revealObserver.observe(card));
 
   const galleryObserver = new IntersectionObserver(
     (entries) => {
@@ -109,6 +112,7 @@ if ("IntersectionObserver" in window) {
   motionVideos.forEach((video) => videoObserver.observe(video));
 } else {
   revealBlocks.forEach((block) => block.classList.add("is-visible"));
+  roomCards.forEach((card) => card.classList.add("is-visible"));
   motionVideos.forEach((video) => video.play().catch(() => {}));
 }
 
@@ -181,19 +185,61 @@ let ticking = false;
 
 const updateParallax = () => {
   const viewport = window.innerHeight || 1;
+  const isCompact = window.innerWidth < 720;
 
   driftItems.forEach((item, index) => {
     const rect = item.getBoundingClientRect();
     const progress = (rect.top + rect.height / 2 - viewport / 2) / viewport;
     const clamped = Math.max(-1, Math.min(1, progress));
     const direction = index % 2 === 0 ? -1 : 1;
-    const isCompact = window.innerWidth < 720;
     const xStrength = isCompact ? 0 : item.classList.contains("hero-content") ? 18 : 34;
     const yStrength = isCompact ? 20 : item.classList.contains("quote-video") ? 18 : 46;
     const x = clamped * direction * xStrength;
     const y = clamped * -yStrength;
 
     item.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
+  });
+
+  roomCards.forEach((card, index) => {
+    if (prefersReducedMotion.matches) {
+      card.style.removeProperty("--room-x");
+      card.style.removeProperty("--room-y");
+      card.style.removeProperty("--room-rotate");
+      card.style.removeProperty("--room-img-scale");
+      return;
+    }
+
+    const rect = card.getBoundingClientRect();
+    const progress = (rect.top + rect.height / 2 - viewport / 2) / viewport;
+    const clamped = Math.max(-1, Math.min(1, progress));
+    const direction = index % 2 === 0 ? -1 : 1;
+    const x = isCompact ? 0 : clamped * direction * 26;
+    const y = clamped * (index % 2 === 0 ? -34 : -22);
+    const rotate = isCompact ? 0 : clamped * direction * 0.9;
+    const imageScale = 1.025 + (1 - Math.abs(clamped)) * 0.035;
+
+    card.style.setProperty("--room-x", `${x.toFixed(2)}px`);
+    card.style.setProperty("--room-y", `${y.toFixed(2)}px`);
+    card.style.setProperty("--room-rotate", `${rotate.toFixed(3)}deg`);
+    card.style.setProperty("--room-img-scale", imageScale.toFixed(3));
+  });
+
+  testimonialCards.forEach((card, index) => {
+    if (prefersReducedMotion.matches) {
+      card.style.removeProperty("--testimonial-x");
+      card.style.removeProperty("--testimonial-y");
+      return;
+    }
+
+    const rect = card.getBoundingClientRect();
+    const progress = (rect.top + rect.height / 2 - viewport / 2) / viewport;
+    const clamped = Math.max(-1, Math.min(1, progress));
+    const direction = index % 2 === 0 ? -1 : 1;
+    const x = isCompact ? 0 : clamped * direction * 18;
+    const y = clamped * -18;
+
+    card.style.setProperty("--testimonial-x", `${x.toFixed(2)}px`);
+    card.style.setProperty("--testimonial-y", `${y.toFixed(2)}px`);
   });
 
   growFrames.forEach((frame) => {

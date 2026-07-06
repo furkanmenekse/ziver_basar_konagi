@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.5.13 - 2026-07-06
+
+- Improved large editorial heading spacing so descenders no longer collide with following copy.
+- Reworked the testimonial section with guest portrait imagery and more natural guest-note copy.
+- Added scroll-reactive room card movement and hover motion so the rooms section feels less static.
+
 ## v0.5.12 - 2026-07-06
 
 - Retried the GitHub Pages deployment after a transient Pages publish failure.
