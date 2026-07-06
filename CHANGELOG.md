@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.5.14 - 2026-07-06
+
+- Removed the oversized testimonial heading and kept the guest-note section lighter.
+- Replaced awkward arrival copy with warmer, guest-facing language.
+- Updated the table section copy to focus on Giresun flavors and breakfast atmosphere.
+- Reworked the mobile rooms gallery into a horizontal card carousel to avoid broken overlaps.
+
 ## v0.5.13 - 2026-07-06
 
 - Improved large editorial heading spacing so descenders no longer collide with following copy.

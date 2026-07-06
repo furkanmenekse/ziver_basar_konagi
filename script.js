@@ -214,9 +214,9 @@ const updateParallax = () => {
     const clamped = Math.max(-1, Math.min(1, progress));
     const direction = index % 2 === 0 ? -1 : 1;
     const x = isCompact ? 0 : clamped * direction * 26;
-    const y = clamped * (index % 2 === 0 ? -34 : -22);
+    const y = isCompact ? 0 : clamped * (index % 2 === 0 ? -34 : -22);
     const rotate = isCompact ? 0 : clamped * direction * 0.9;
-    const imageScale = 1.025 + (1 - Math.abs(clamped)) * 0.035;
+    const imageScale = isCompact ? 1.02 : 1.025 + (1 - Math.abs(clamped)) * 0.035;
 
     card.style.setProperty("--room-x", `${x.toFixed(2)}px`);
     card.style.setProperty("--room-y", `${y.toFixed(2)}px`);
