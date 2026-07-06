@@ -115,21 +115,65 @@ if ("IntersectionObserver" in window) {
 document.addEventListener("DOMContentLoaded", () => window.setTimeout(updateNavThemeFromPoint, 360), { once: true });
 window.addEventListener("hashchange", () => window.setTimeout(updateNavThemeFromPoint, 180));
 
+document.querySelectorAll(".nav-contact-panel a[href^='#']").forEach((link) => {
+  link.addEventListener("click", () => {
+    link.closest("details")?.removeAttribute("open");
+  });
+});
+
 experienceSliders.forEach((slider) => {
   const track = slider.querySelector("[data-slider-track]");
-  const previous = slider.querySelector("[data-slider-prev]");
-  const next = slider.querySelector("[data-slider-next]");
 
-  if (!track || !previous || !next) return;
+  if (!track) return;
 
-  const scrollAmount = () => Math.max(320, track.clientWidth * 0.58);
+  let isDragging = false;
+  let didDrag = false;
+  let startX = 0;
+  let startScroll = 0;
 
-  previous.addEventListener("click", () => {
-    track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+  track.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0) return;
+
+    isDragging = true;
+    didDrag = false;
+    startX = event.clientX;
+    startScroll = track.scrollLeft;
+    track.classList.add("is-dragging");
+    track.setPointerCapture?.(event.pointerId);
   });
 
-  next.addEventListener("click", () => {
-    track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+  track.addEventListener("pointermove", (event) => {
+    if (!isDragging) return;
+
+    const delta = event.clientX - startX;
+    if (Math.abs(delta) > 4) didDrag = true;
+    track.scrollLeft = startScroll - delta;
+    event.preventDefault();
+  });
+
+  const stopDragging = (event) => {
+    if (!isDragging) return;
+
+    isDragging = false;
+    track.classList.remove("is-dragging");
+    track.releasePointerCapture?.(event.pointerId);
+  };
+
+  track.addEventListener("pointerup", stopDragging);
+  track.addEventListener("pointercancel", stopDragging);
+  track.addEventListener(
+    "click",
+    (event) => {
+      if (!didDrag) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+      didDrag = false;
+    },
+    true
+  );
+  track.addEventListener("dragstart", (event) => {
+    event.preventDefault();
   });
 });
 

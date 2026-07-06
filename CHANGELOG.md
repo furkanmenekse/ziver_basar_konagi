@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.5.11 - 2026-07-06
+
+- Changed the header Mail shortcut to scroll to the visible email address instead of opening a mail app.
+- Removed gallery arrow buttons and added mouse drag support for the horizontal image slider.
+- Moved the hero scroll cue to the lower-right corner.
+- Removed scroll-grow image captions and the extra location line under the footer logo.
+
 ## v0.5.10 - 2026-07-06
 
 - Removed the separate Contact link from the main navigation.

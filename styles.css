@@ -430,9 +430,9 @@ p {
 
 .scroll-cue {
   position: absolute;
-  right: auto;
+  right: clamp(22px, 4vw, 58px);
   bottom: clamp(18px, 4vw, 48px);
-  left: 50%;
+  left: auto;
   z-index: 3;
   display: grid;
   gap: 12px;
@@ -442,7 +442,6 @@ p {
   font-weight: 850;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  transform: translateX(-50%);
 }
 
 .scroll-cue span {
@@ -650,11 +649,19 @@ p {
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  cursor: grab;
+  touch-action: pan-y;
   transform: translateX(-50%);
 }
 
 .slider-track::-webkit-scrollbar {
   display: none;
+}
+
+.slider-track.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
 }
 
 .slider-card {
@@ -677,6 +684,7 @@ p {
   object-fit: cover;
   transform: scale(1.03);
   transition: transform 700ms ease;
+  pointer-events: none;
 }
 
 .slider-card:hover img {
@@ -736,33 +744,6 @@ p {
 .contact-copy p:not(.micro) {
   font-family: var(--font-text);
   font-weight: 300;
-}
-
-.slider-controls {
-  display: flex;
-  gap: 10px;
-  justify-self: end;
-}
-
-.slider-controls button {
-  display: grid;
-  place-items: center;
-  width: 46px;
-  height: 46px;
-  border: 1px solid rgba(236, 228, 216, 0.38);
-  border-radius: 50%;
-  background: transparent;
-  color: var(--paper);
-  font: 500 28px/1 var(--font-display);
-  cursor: pointer;
-  transition:
-    background 220ms ease,
-    color 220ms ease;
-}
-
-.slider-controls button:hover {
-  background: var(--paper);
-  color: #342d24;
 }
 
 .split-story {
@@ -990,18 +971,6 @@ p {
     linear-gradient(180deg, rgba(31, 53, 43, 0.12), rgba(31, 53, 43, 0.42)),
     linear-gradient(90deg, rgba(31, 53, 43, 0.28), rgba(31, 53, 43, 0));
   pointer-events: none;
-}
-
-.grow-frame figcaption {
-  position: absolute;
-  left: clamp(20px, 3vw, 48px);
-  bottom: clamp(18px, 2.6vw, 42px);
-  z-index: 2;
-  color: rgba(255, 253, 248, 0.82);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 .quote-section {
@@ -1247,7 +1216,6 @@ blockquote {
   width: min(210px, 100%);
 }
 
-.footer-brand p,
 .footer-address {
   margin-bottom: 0;
   color: var(--muted);
@@ -1407,10 +1375,6 @@ blockquote {
     grid-template-columns: 1fr;
     width: calc(100% - 44px);
     padding-left: 0;
-  }
-
-  .slider-controls {
-    justify-self: start;
   }
 
   .contact-map {
