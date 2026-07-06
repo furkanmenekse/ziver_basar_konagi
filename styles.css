@@ -825,6 +825,11 @@ body.is-ready [data-text-effect="hero"] .scroll-cue {
   scroll-snap-type: none;
 }
 
+.slider-track.is-auto-moving {
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+}
+
 .slider-card {
   position: relative;
   flex: 0 0 clamp(280px, 25vw, 460px);
@@ -896,6 +901,34 @@ body.is-ready [data-text-effect="hero"] .scroll-cue {
   color: rgba(236, 228, 216, 0.72);
   font-size: clamp(20px, 1.6vw, 26px);
   line-height: 1.34;
+}
+
+.slider-copy[data-slider-copy] > * {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity 760ms ease,
+    filter 840ms ease,
+    transform 920ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.slider-copy[data-slider-copy].is-visible > * {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+.slider-copy[data-slider-copy].is-visible > .micro {
+  transition-delay: 80ms;
+}
+
+.slider-copy[data-slider-copy].is-visible > h2 {
+  transition-delay: 240ms;
+}
+
+.slider-copy[data-slider-copy].is-visible > p:not(.micro) {
+  transition-delay: 420ms;
 }
 
 .intro-copy p,
@@ -1316,6 +1349,15 @@ blockquote {
   text-transform: uppercase;
 }
 
+.testimonial-card p span:first-child {
+  color: var(--forest);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
 .testimonial-card p span + span {
   color: var(--muted);
 }
@@ -1555,7 +1597,8 @@ blockquote {
   [data-text-effect="hero"] .scroll-cue,
   [data-text-effect="intro"] .intro-grid .micro,
   [data-text-effect="intro"] .mixed-statement span,
-  [data-text-effect="intro"] .intro-copy {
+  [data-text-effect="intro"] .intro-copy,
+  .slider-copy[data-slider-copy] > * {
     opacity: 1;
     transform: none;
     clip-path: none;

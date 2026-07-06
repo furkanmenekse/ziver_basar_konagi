@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.5.17 - 2026-07-06
+
+- Added a slow leftward ambient drift to the experience slider after an initial easing movement.
+- Added sequential reveal timing to the experience slider copy.
+- Updated testimonial metadata with more natural guest names.
+
 ## v0.5.16 - 2026-07-06
 
 - Fixed clipped descenders in the hero and intro headline text while preserving the entrance effects.

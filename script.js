@@ -6,6 +6,7 @@ const motionVideos = document.querySelectorAll("video[autoplay]");
 const gallerySteps = document.querySelectorAll("[data-gallery-step]");
 const galleryImages = document.querySelectorAll("[data-gallery-image]");
 const experienceSliders = document.querySelectorAll("[data-experience-slider]");
+const sliderCopies = document.querySelectorAll("[data-slider-copy]");
 const growFrames = document.querySelectorAll("[data-grow-image]");
 const roomCards = document.querySelectorAll("[data-room-card]");
 const testimonialCards = document.querySelectorAll("[data-testimonial-card]");
@@ -81,6 +82,7 @@ if ("IntersectionObserver" in window) {
 
   revealBlocks.forEach((block) => revealObserver.observe(block));
   roomCards.forEach((card) => revealObserver.observe(card));
+  sliderCopies.forEach((copy) => revealObserver.observe(copy));
 
   const textEffectObserver = new IntersectionObserver(
     (entries) => {
@@ -127,6 +129,7 @@ if ("IntersectionObserver" in window) {
 } else {
   revealBlocks.forEach((block) => block.classList.add("is-visible"));
   roomCards.forEach((card) => card.classList.add("is-visible"));
+  sliderCopies.forEach((copy) => copy.classList.add("is-visible"));
   textEffectSections.forEach((section) => section.classList.add("is-text-visible"));
   motionVideos.forEach((video) => video.play().catch(() => {}));
 }
@@ -145,10 +148,82 @@ experienceSliders.forEach((slider) => {
 
   if (!track) return;
 
+  const originalCards = Array.from(track.children);
+  originalCards.forEach((card) => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    clone.querySelectorAll("a").forEach((link) => {
+      link.removeAttribute("href");
+      link.setAttribute("tabindex", "-1");
+    });
+    track.appendChild(clone);
+  });
+
   let isDragging = false;
   let didDrag = false;
   let startX = 0;
   let startScroll = 0;
+  let sliderInView = !("IntersectionObserver" in window);
+  let autoStartedAt = performance.now();
+  let lastFrame = performance.now();
+  let pauseUntil = 0;
+  const canAutoScroll = originalCards.length > 1;
+  const firstClone = () => track.children[originalCards.length];
+  const loopDistance = () => {
+    const clone = firstClone();
+    const first = track.children[0];
+    return clone && first ? clone.offsetLeft - first.offsetLeft : track.scrollWidth / 2;
+  };
+  const pauseAutoScroll = (duration = 2600) => {
+    pauseUntil = performance.now() + duration;
+  };
+
+  if (canAutoScroll) {
+    track.classList.add("is-auto-moving");
+  }
+
+  if (canAutoScroll && "IntersectionObserver" in window) {
+    const autoScrollObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const wasVisible = sliderInView;
+          sliderInView = entry.isIntersecting;
+          if (!wasVisible && sliderInView) {
+            autoStartedAt = performance.now();
+            lastFrame = autoStartedAt;
+          }
+        });
+      },
+      { threshold: 0.18 }
+    );
+
+    autoScrollObserver.observe(slider);
+  }
+
+  const autoScroll = (now) => {
+    const deltaTime = Math.min(64, now - lastFrame);
+    lastFrame = now;
+
+    if (canAutoScroll && sliderInView && !isDragging && now > pauseUntil && !prefersReducedMotion.matches) {
+      const settle = Math.min(1, Math.max(0, (now - autoStartedAt) / 5200));
+      const eased = 1 - Math.pow(1 - settle, 3);
+      const speed = 0.15 - eased * 0.136;
+      track.scrollLeft += speed * deltaTime;
+
+      const distance = loopDistance();
+      if (distance > 0 && track.scrollLeft >= distance) {
+        track.scrollLeft -= distance;
+      }
+    }
+
+    window.requestAnimationFrame(autoScroll);
+  };
+
+  if (canAutoScroll) {
+    window.requestAnimationFrame(autoScroll);
+  }
+
+  track.addEventListener("wheel", () => pauseAutoScroll(), { passive: true });
 
   track.addEventListener("pointerdown", (event) => {
     if (event.button !== 0) return;
@@ -157,6 +232,7 @@ experienceSliders.forEach((slider) => {
     didDrag = false;
     startX = event.clientX;
     startScroll = track.scrollLeft;
+    pauseAutoScroll(3200);
     track.classList.add("is-dragging");
     track.setPointerCapture?.(event.pointerId);
   });
@@ -175,6 +251,7 @@ experienceSliders.forEach((slider) => {
 
     isDragging = false;
     track.classList.remove("is-dragging");
+    pauseAutoScroll();
     track.releasePointerCapture?.(event.pointerId);
   };
 
