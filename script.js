@@ -6,9 +6,11 @@ const motionVideos = document.querySelectorAll("video[autoplay]");
 const gallerySteps = document.querySelectorAll("[data-gallery-step]");
 const galleryImages = document.querySelectorAll("[data-gallery-image]");
 const experienceSliders = document.querySelectorAll("[data-experience-slider]");
+const growFrames = document.querySelectorAll("[data-grow-image]");
 const driftItems = document.querySelectorAll(
   ".hero-content, .split-media, .broken-large, .broken-small, .atmosphere-card img, .contact-map video, .contact-map iframe, .quote-video"
 );
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 body.classList.add("is-loading", "nav-dark");
 
@@ -150,6 +152,25 @@ const updateParallax = () => {
     item.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
   });
 
+  growFrames.forEach((frame) => {
+    const image = frame.querySelector("img");
+    if (!image) return;
+
+    if (prefersReducedMotion.matches) {
+      image.style.transform = "none";
+      return;
+    }
+
+    const rect = frame.getBoundingClientRect();
+    const center = rect.top + rect.height / 2;
+    const rawProgress = 1 - center / (viewport + rect.height * 0.5);
+    const progress = Math.max(0, Math.min(1, rawProgress));
+    const scale = 1.02 + progress * 0.18;
+    const y = (0.5 - progress) * 44;
+
+    image.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0) scale(${scale.toFixed(3)})`;
+  });
+
   ticking = false;
 };
 
@@ -158,7 +179,7 @@ window.addEventListener(
   () => {
     updateNavThemeFromPoint();
 
-    if (!ticking && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (!ticking && !prefersReducedMotion.matches) {
       window.requestAnimationFrame(updateParallax);
       ticking = true;
     }

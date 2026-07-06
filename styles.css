@@ -918,6 +918,92 @@ p {
   margin-top: -6vw;
 }
 
+.scroll-grow {
+  display: grid;
+  gap: clamp(38px, 7vw, 106px);
+  min-height: auto;
+  padding: clamp(104px, 14vw, 220px) 0;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, #342d24 0%, #263d31 52%, #1f352b 100%);
+}
+
+.grow-intro {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.95fr) minmax(280px, 0.55fr);
+  gap: clamp(28px, 7vw, 112px);
+  align-items: end;
+}
+
+.grow-intro .micro {
+  grid-column: 1 / -1;
+  color: rgba(236, 228, 216, 0.66);
+}
+
+.grow-intro h2 {
+  max-width: 900px;
+  color: var(--white);
+  font-size: clamp(48px, 6.7vw, 112px);
+  line-height: 0.92;
+}
+
+.grow-intro p:not(.micro) {
+  max-width: 480px;
+  color: rgba(255, 253, 248, 0.68);
+  font-family: var(--font-text);
+  font-size: clamp(20px, 1.45vw, 26px);
+  font-weight: 300;
+  line-height: 1.38;
+}
+
+.grow-frame {
+  position: relative;
+  width: min(1180px, calc(100% - 44px));
+  height: clamp(420px, 72svh, 860px);
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--forest-deep);
+}
+
+.grow-frame-wide {
+  width: min(1500px, calc(100% - 44px));
+}
+
+.grow-frame-float {
+  width: min(900px, calc(100% - 44px));
+  height: clamp(360px, 58svh, 700px);
+  margin-right: max(22px, calc((100vw - 1380px) / 2));
+}
+
+.grow-frame img {
+  width: 100%;
+  height: 112%;
+  object-fit: cover;
+  transform: translate3d(0, 22px, 0) scale(1.02);
+}
+
+.grow-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(31, 53, 43, 0.12), rgba(31, 53, 43, 0.42)),
+    linear-gradient(90deg, rgba(31, 53, 43, 0.28), rgba(31, 53, 43, 0));
+  pointer-events: none;
+}
+
+.grow-frame figcaption {
+  position: absolute;
+  left: clamp(20px, 3vw, 48px);
+  bottom: clamp(18px, 2.6vw, 42px);
+  z-index: 2;
+  color: rgba(255, 253, 248, 0.82);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .quote-section {
   display: grid;
   align-items: center;
@@ -954,6 +1040,63 @@ blockquote {
   margin: 0 auto;
   font-size: clamp(48px, 7.2vw, 112px);
   line-height: 0.96;
+}
+
+.testimonials {
+  display: grid;
+  align-items: center;
+  min-height: 100svh;
+  padding: clamp(92px, 13vw, 190px) 0;
+}
+
+.testimonial-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.76fr) minmax(360px, 1fr);
+  gap: clamp(42px, 8vw, 130px);
+  align-items: start;
+}
+
+.testimonial-heading {
+  position: sticky;
+  top: 132px;
+}
+
+.testimonial-heading h2 {
+  max-width: 620px;
+  font-size: clamp(48px, 6vw, 92px);
+  line-height: 0.94;
+}
+
+.testimonial-list {
+  display: grid;
+  border-top: 1px solid var(--line);
+}
+
+.testimonial-card {
+  display: grid;
+  gap: 24px;
+  padding: clamp(28px, 4.5vw, 66px) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.testimonial-card blockquote {
+  max-width: 760px;
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: clamp(31px, 3.2vw, 54px);
+  font-weight: 300;
+  line-height: 1.04;
+  text-align: left;
+}
+
+.testimonial-card p {
+  margin: 0;
+  color: var(--rust);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .atmosphere-section {
@@ -1142,6 +1285,7 @@ blockquote {
 .split-media,
 .broken-large,
 .broken-small,
+.grow-frame img,
 .atmosphere-card img,
 .contact-map video,
 .contact-map iframe,
@@ -1198,6 +1342,8 @@ blockquote {
   .scroll-gallery,
   .split-story,
   .rooms-layout,
+  .grow-intro,
+  .testimonial-layout,
   .contact-stage {
     grid-template-columns: 1fr;
   }
@@ -1288,6 +1434,15 @@ blockquote {
     grid-template-columns: 1fr;
   }
 
+  .grow-frame-float {
+    margin-right: auto;
+  }
+
+  .testimonial-heading {
+    position: relative;
+    top: auto;
+  }
+
   .atmosphere-intro,
   .atmosphere-grid {
     grid-template-columns: 1fr 1fr;
@@ -1328,6 +1483,8 @@ blockquote {
   .split-story,
   .rooms-layout,
   .broken-grid,
+  .grow-intro,
+  .grow-frame,
   .contact-stage,
   .footer {
     width: calc(100% - 28px);
@@ -1407,6 +1564,26 @@ blockquote {
   .atmosphere-intro,
   .atmosphere-grid {
     grid-template-columns: 1fr;
+  }
+
+  .scroll-grow {
+    gap: 34px;
+    padding: 190px 0 86px;
+  }
+
+  .grow-frame,
+  .grow-frame-wide,
+  .grow-frame-float {
+    width: calc(100% - 28px);
+    height: min(116vw, 560px);
+  }
+
+  .testimonial-card blockquote {
+    font-size: clamp(29px, 9vw, 44px);
+  }
+
+  .testimonials {
+    padding-top: 190px;
   }
 
   .footer {

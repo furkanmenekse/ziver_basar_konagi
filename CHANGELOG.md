@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.5.9 - 2026-07-06
+
+- Added scroll-growing cinematic image scenes to create a stronger lower-page visual effect.
+- Added a refined guest-notes/testimonial section in Turkish and English.
+- Extended scroll motion handling so the new scenes gently zoom and drift while respecting reduced-motion preferences.
+
 ## v0.5.8 - 2026-07-06
 
 - Replaced the rooms link list with a non-clickable room image gallery.
