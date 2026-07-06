@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.5.18 - 2026-07-06
+
+- Switched GitHub Pages publishing from the legacy Pages builder to an explicit static-site workflow.
+
 ## v0.5.17 - 2026-07-06
 
 - Added a slow leftward ambient drift to the experience slider after an initial easing movement.
