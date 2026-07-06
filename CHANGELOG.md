@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.5.16 - 2026-07-06
+
+- Fixed clipped descenders in the hero and intro headline text while preserving the entrance effects.
+
 ## v0.5.15 - 2026-07-06
 
 - Added distinct entrance effects for the hero text and the upper intro statement.
