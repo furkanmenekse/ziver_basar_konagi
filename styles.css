@@ -10,8 +10,9 @@
   --line: rgba(59, 59, 59, 0.16);
   --dark-line: rgba(255, 253, 248, 0.22);
   --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-text: "Spectral", Georgia, "Times New Roman", serif;
   --font-script: "Allura", "Brush Script MT", cursive;
-  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Manrope", "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color-scheme: light;
   font-family: var(--font-body);
   line-height: 1.45;
@@ -213,6 +214,7 @@ body.is-ready .loader {
 .micro {
   margin-bottom: clamp(18px, 3vw, 34px);
   color: var(--rust);
+  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 850;
   letter-spacing: 0.1em;
@@ -255,7 +257,10 @@ h3 {
 
 p {
   color: var(--muted);
+  font-family: var(--font-text);
   font-size: clamp(17px, 1.5vw, 21px);
+  font-weight: 300;
+  line-height: 1.48;
 }
 
 .dark-section p {
@@ -660,21 +665,29 @@ p {
 }
 
 .slider-copy h2 {
-  max-width: 460px;
+  max-width: 540px;
   margin-bottom: 18px;
   color: rgba(236, 228, 216, 0.7);
   font-family: var(--font-body);
-  font-size: clamp(17px, 1.4vw, 23px);
-  font-weight: 800;
-  line-height: 1.16;
-  text-transform: uppercase;
+  font-size: clamp(23px, 2.2vw, 36px);
+  font-weight: 200;
+  line-height: 1.08;
 }
 
 .slider-copy p:not(.micro) {
-  max-width: 480px;
-  color: rgba(236, 228, 216, 0.68);
-  font-size: clamp(19px, 1.6vw, 25px);
+  max-width: 520px;
+  color: rgba(236, 228, 216, 0.72);
+  font-size: clamp(20px, 1.6vw, 26px);
   line-height: 1.34;
+}
+
+.intro-copy p,
+.slider-copy p:not(.micro),
+.split-copy p:not(.micro),
+.broken-copy p:not(.micro),
+.contact-copy p:not(.micro) {
+  font-family: var(--font-text);
+  font-weight: 300;
 }
 
 .slider-controls {
@@ -737,6 +750,12 @@ p {
 .contact-copy h2 {
   font-size: clamp(42px, 5.1vw, 78px);
   line-height: 0.96;
+}
+
+.split-copy p:not(.micro) {
+  max-width: 640px;
+  font-size: clamp(20px, 1.65vw, 27px);
+  line-height: 1.36;
 }
 
 .hover-preview {

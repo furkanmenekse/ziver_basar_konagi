@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.5.7 - 2026-07-06
+
+- Reworked repeated slider copy so each section has distinct wording.
+- Expanded the typography system with refined sans and text serif families.
+- Lightened the experience slider headline weight and improved long-form copy styling.
+
 ## v0.5.6 - 2026-07-06
 
 - Updated the main statement copy from "bulun" to "seçin" and aligned the English wording.
