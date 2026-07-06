@@ -9,6 +9,7 @@ const experienceSliders = document.querySelectorAll("[data-experience-slider]");
 const growFrames = document.querySelectorAll("[data-grow-image]");
 const roomCards = document.querySelectorAll("[data-room-card]");
 const testimonialCards = document.querySelectorAll("[data-testimonial-card]");
+const textEffectSections = document.querySelectorAll("[data-text-effect]");
 const driftItems = document.querySelectorAll(
   ".hero-content, .split-media, .broken-large, .broken-small, .atmosphere-card img, .contact-map video, .contact-map iframe, .quote-video"
 );
@@ -81,6 +82,19 @@ if ("IntersectionObserver" in window) {
   revealBlocks.forEach((block) => revealObserver.observe(block));
   roomCards.forEach((card) => revealObserver.observe(card));
 
+  const textEffectObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-text-visible");
+        }
+      });
+    },
+    { threshold: 0.34 }
+  );
+
+  textEffectSections.forEach((section) => textEffectObserver.observe(section));
+
   const galleryObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -113,6 +127,7 @@ if ("IntersectionObserver" in window) {
 } else {
   revealBlocks.forEach((block) => block.classList.add("is-visible"));
   roomCards.forEach((card) => card.classList.add("is-visible"));
+  textEffectSections.forEach((section) => section.classList.add("is-text-visible"));
   motionVideos.forEach((video) => video.play().catch(() => {}));
 }
 

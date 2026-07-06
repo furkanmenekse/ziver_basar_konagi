@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.5.15 - 2026-07-06
+
+- Added distinct entrance effects for the hero text and the upper intro statement.
+- Kept the new text motion tied to scroll visibility and reduced-motion preferences.
+
 ## v0.5.14 - 2026-07-06
 
 - Removed the oversized testimonial heading and kept the guest-note section lighter.
