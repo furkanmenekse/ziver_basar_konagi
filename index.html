@@ -36,7 +36,14 @@
       <div class="nav-meta">
         <a href="index.html" aria-current="page">TR</a>
         <a href="en/index.html">EN</a>
-        <a class="nav-call" href="tel:+905337473300">Ara</a>
+        <details class="nav-contact">
+          <summary>İletişim</summary>
+          <div class="nav-contact-panel" aria-label="İletişim seçenekleri">
+            <a href="tel:+905337473300">Ara</a>
+            <a href="https://wa.me/905337473300">WhatsApp</a>
+            <a href="mailto:info@ziverbasarkonagi.com">Mail</a>
+          </div>
+        </details>
       </div>
     </header>
 
@@ -147,31 +154,34 @@
         </div>
       </section>
 
-      <section id="odalar" class="hover-preview scene dark-section" data-theme="dark">
-        <div class="section-shell">
-          <div class="hover-heading">
+      <section id="odalar" class="rooms-showcase scene dark-section" data-theme="dark">
+        <div class="section-shell rooms-layout">
+          <div class="rooms-heading">
             <p class="micro">Odalar</p>
-            <h2>Tarih, kişi sayısı ve oda ihtiyacınızı birlikte netleştirelim.</h2>
+            <h2>Odanızı seçmeden önce atmosferine yakından bakın.</h2>
+            <p>
+              Ahşabın sıcaklığı, sade tekstiller ve yayla sessizliği oda
+              deneyiminin ana karakterini oluşturur.
+            </p>
           </div>
-          <div class="hover-list" data-hover-list>
-            <a href="https://wa.me/905337473300" data-preview="assets/stock/cozy-bed.jpg">
-              <span>01</span>
-              Standart konaklama
-            </a>
-            <a href="https://wa.me/905337473300" data-preview="assets/stock/hotel-room.jpg">
-              <span>02</span>
-              Aile ve grup seçenekleri
-            </a>
-            <a href="https://wa.me/905337473300" data-preview="assets/stock/cozy-bed.jpg">
-              <span>03</span>
-              Sıcak oda atmosferi
-            </a>
-            <a href="tel:+905337473300" data-preview="assets/photos/night.jpeg">
-              <span>04</span>
-              Müsaitlik bilgisi
-            </a>
+          <div class="rooms-gallery" aria-label="Oda görselleri">
+            <figure class="room-card room-card-tall">
+              <img src="assets/stock/cozy-bed.jpg" alt="Sıcak ışıklı yatak odası atmosferi" />
+              <figcaption>Yumuşak ışık ve sakin uyku alanı</figcaption>
+            </figure>
+            <figure class="room-card">
+              <img src="assets/stock/warm-bedroom.jpg" alt="Oturma alanı ve sıcak oda detayı" />
+              <figcaption>Konaklama boyunca rahat bir köşe</figcaption>
+            </figure>
+            <figure class="room-card">
+              <img src="assets/stock/hotel-room.jpg" alt="Aydınlık oda ve dinlenme alanı" />
+              <figcaption>Sade, ferah ve kolay kullanılan alanlar</figcaption>
+            </figure>
+            <figure class="room-card room-card-wide">
+              <img src="assets/stock/hotel-lobby.jpg" alt="Ortak iç mekan ve dinlenme atmosferi" />
+              <figcaption>Oda dışına taşan sıcak konak hissi</figcaption>
+            </figure>
           </div>
-          <img class="hover-image" src="assets/stock/cozy-bed.jpg" alt="" data-hover-image />
         </div>
       </section>
 
@@ -189,12 +199,33 @@
         <img class="broken-small parallax-media" src="assets/stock/coffee-detail.jpg" alt="Kahve ve masa detayı" />
       </section>
 
-      <section class="image-ribbon scene" data-theme="light" aria-label="Atmosfer galerisi">
-        <img src="assets/stock/highland-lake.jpg" alt="Yayla gölü ve dağ manzarası" />
-        <img src="assets/photos/night.jpeg" alt="Ziver Başar Konağı gece görünümü" />
-        <img src="assets/stock/table-detail.jpg" alt="Sofra detayı" />
-        <img src="assets/stock/hotel-lobby.jpg" alt="Otel iç mekan atmosferi" />
-        <img src="assets/stock/forest-path.jpg" alt="Orman yolu" />
+      <section class="atmosphere-section scene" data-theme="light" aria-label="Konağın atmosferi">
+        <div class="section-shell atmosphere-intro reveal-block">
+          <p class="micro">Atmosfer</p>
+          <h2>Konağı tamamlayan küçük sahneler.</h2>
+          <p>
+            Yayla yolu, taş cephe, sofra ve odalar aynı sakin ritmin parçaları
+            olarak bir araya gelir.
+          </p>
+        </div>
+        <div class="atmosphere-grid">
+          <figure class="atmosphere-card">
+            <img src="assets/stock/highland-lake.jpg" alt="Yayla gölü ve dağ manzarası" />
+            <figcaption>Yayla çevresi</figcaption>
+          </figure>
+          <figure class="atmosphere-card atmosphere-card-tall">
+            <img src="assets/photos/night.jpeg" alt="Ziver Başar Konağı gece görünümü" />
+            <figcaption>Gece ışığı</figcaption>
+          </figure>
+          <figure class="atmosphere-card">
+            <img src="assets/stock/table-detail.jpg" alt="Sofra detayı" />
+            <figcaption>Sofra detayı</figcaption>
+          </figure>
+          <figure class="atmosphere-card atmosphere-card-tall">
+            <img src="assets/stock/forest-path.jpg" alt="Orman yolu" />
+            <figcaption>Orman yolu</figcaption>
+          </figure>
+        </div>
       </section>
 
       <section class="quote-section scene dark-section" data-theme="dark">
@@ -202,9 +233,8 @@
           <source src="https://v3b.fal.media/files/b/0aa1157d/uxHQSfrugtvLCtugqlTe0_video.mp4" type="video/mp4" />
         </video>
         <div class="section-shell">
-          <p class="micro">Misafir Hissi</p>
           <blockquote>
-            “Gösterişten uzak, doğaya yakın, sıcak ışıklı bir yayla konağı.”
+            “Gösterişten uzak, doğaya yakın, sıcak bir yayla konağı.”
           </blockquote>
         </div>
       </section>
@@ -235,9 +265,25 @@
     </main>
 
     <footer class="footer">
-      <img src="assets/logos/zbk-logotype-color-2.svg" alt="Ziver Başar Konağı" />
-      <p>Kulakkaya Yaylası / Giresun</p>
-      <a href="#top">Yukarı</a>
+      <div class="footer-brand">
+        <img src="assets/logos/zbk-logotype-color-1.svg" alt="Ziver Başar Konağı" />
+        <p>Kulakkaya Yaylası, Giresun</p>
+      </div>
+      <address class="footer-address">
+        Kulakkaya Mahallesi, Köy İçi Mevki, No:80<br />
+        28960 Dereli / Giresun
+      </address>
+      <div class="footer-contact">
+        <a href="tel:+905337473300">+90 533 747 33 00</a>
+        <a href="https://wa.me/905337473300">WhatsApp</a>
+        <a href="mailto:info@ziverbasarkonagi.com">info@ziverbasarkonagi.com</a>
+      </div>
+      <nav class="footer-links" aria-label="Alt menü">
+        <a href="#konak">Konak</a>
+        <a href="#odalar">Odalar</a>
+        <a href="#iletisim">İletişim</a>
+        <a href="#top">Yukarı</a>
+      </nav>
     </footer>
 
     <script src="script.js"></script>

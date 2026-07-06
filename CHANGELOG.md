@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.5.8 - 2026-07-06
+
+- Replaced the rooms link list with a non-clickable room image gallery.
+- Added a header contact menu with phone, WhatsApp, and email options.
+- Reworked the loose image ribbon into a titled atmosphere section with captions.
+- Removed the awkward quote label, updated the quote wording, and expanded the footer.
+
 ## v0.5.7 - 2026-07-06
 
 - Reworked repeated slider copy so each section has distinct wording.

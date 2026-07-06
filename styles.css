@@ -161,13 +161,13 @@ body.is-ready .loader {
 }
 
 .nav-links a,
-.nav-meta a {
+.nav-meta > a {
   position: relative;
   padding: 8px 0;
 }
 
 .nav-links a::after,
-.nav-meta a:not(.nav-call)::after {
+.nav-meta > a::after {
   content: "";
   position: absolute;
   right: 0;
@@ -181,18 +181,67 @@ body.is-ready .loader {
 }
 
 .nav-links a:hover::after,
-.nav-meta a:hover::after,
-.nav-meta a[aria-current="page"]::after {
+.nav-meta > a:hover::after,
+.nav-meta > a[aria-current="page"]::after {
   transform: scaleX(1);
   transform-origin: left;
 }
 
-.nav-call {
+.nav-contact {
+  position: relative;
+}
+
+.nav-contact summary {
   min-width: 70px;
-  padding: 8px 15px !important;
+  padding: 8px 15px;
   border: 1px solid currentColor;
   border-radius: 999px;
+  cursor: pointer;
+  list-style: none;
   text-align: center;
+}
+
+.nav-contact summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav-contact-panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 5;
+  display: grid;
+  min-width: 188px;
+  padding: 8px;
+  border: 1px solid rgba(46, 79, 62, 0.16);
+  border-radius: 8px;
+  background: rgba(247, 240, 231, 0.96);
+  box-shadow: 0 18px 48px rgba(31, 53, 43, 0.18);
+  color: var(--forest);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+.nav-contact[open] .nav-contact-panel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.nav-contact-panel a {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(46, 79, 62, 0.12);
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.nav-contact-panel a:last-child {
+  border-bottom: 0;
 }
 
 .scene {
@@ -564,8 +613,7 @@ p {
   transform: translateY(0);
 }
 
-.gallery-step span,
-.hover-list span {
+.gallery-step span {
   display: block;
   margin-bottom: 18px;
   color: var(--rust);
@@ -758,7 +806,7 @@ p {
   line-height: 1.36;
 }
 
-.hover-preview {
+.rooms-showcase {
   display: grid;
   align-items: center;
   min-height: 106svh;
@@ -766,73 +814,70 @@ p {
   overflow: hidden;
 }
 
-.hover-preview .section-shell {
-  position: relative;
+.rooms-layout {
   display: grid;
-  grid-template-columns: minmax(300px, 0.78fr) 1.22fr;
+  grid-template-columns: minmax(300px, 0.68fr) minmax(0, 1.32fr);
   gap: clamp(40px, 7vw, 126px);
   align-items: start;
 }
 
-.hover-heading h2 {
+.rooms-heading {
   position: sticky;
-  top: 140px;
-  max-width: 540px;
+  top: 138px;
+}
+
+.rooms-heading h2 {
+  max-width: 560px;
   font-size: clamp(38px, 4.7vw, 74px);
   line-height: 0.98;
 }
 
-.hover-list {
+.rooms-heading p:not(.micro) {
+  max-width: 430px;
+  margin-top: 24px;
+  color: rgba(255, 253, 248, 0.68);
+}
+
+.rooms-gallery {
   display: grid;
-  border-top: 1px solid var(--dark-line);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 30px);
 }
 
-.hover-list a {
+.room-card {
   display: grid;
-  grid-template-columns: clamp(78px, 7vw, 116px) 1fr;
-  column-gap: clamp(10px, 1.8vw, 24px);
-  align-items: center;
-  min-height: clamp(104px, 13vw, 154px);
-  border-bottom: 1px solid var(--dark-line);
-  font-family: var(--font-display);
-  font-size: clamp(32px, 4.2vw, 68px);
-  line-height: 0.98;
-  transition:
-    color 260ms ease,
-    padding-left 260ms ease;
+  gap: 12px;
+  margin: 0;
 }
 
-.hover-list span {
-  margin-bottom: 0;
-  font-family: var(--font-body);
-  font-size: clamp(20px, 2.4vw, 38px);
-  line-height: 1;
+.room-card:nth-child(2) {
+  margin-top: clamp(42px, 7vw, 110px);
 }
 
-.hover-list a:hover {
-  color: #f0ad83;
-  padding-left: 18px;
+.room-card-wide {
+  grid-column: span 2;
 }
 
-.hover-image {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  z-index: 80;
-  width: min(380px, 42vw);
-  aspect-ratio: 4 / 5;
+.room-card img {
+  width: 100%;
+  height: clamp(290px, 28vw, 500px);
   object-fit: cover;
-  pointer-events: none;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.92) rotate(-2deg);
-  transition:
-    opacity 180ms ease,
-    transform 180ms ease;
 }
 
-.hover-image.is-visible {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1) rotate(-2deg);
+.room-card-tall img {
+  height: clamp(380px, 43vw, 690px);
+}
+
+.room-card-wide img {
+  height: clamp(280px, 30vw, 470px);
+}
+
+.room-card figcaption {
+  color: rgba(255, 253, 248, 0.72);
+  font-family: var(--font-text);
+  font-size: clamp(17px, 1.25vw, 22px);
+  font-weight: 300;
+  line-height: 1.36;
 }
 
 .broken-grid {
@@ -911,30 +956,69 @@ blockquote {
   line-height: 0.96;
 }
 
-.image-ribbon {
+.atmosphere-section {
   display: grid;
-  grid-template-columns: 0.85fr 1.08fr 0.68fr 1fr 0.78fr;
-  align-items: end;
-  gap: clamp(12px, 2vw, 28px);
-  width: min(1500px, calc(100% - 44px));
+  gap: clamp(34px, 6vw, 92px);
   min-height: auto;
-  margin: 0 auto;
   padding: clamp(96px, 14vw, 210px) 0;
 }
 
-.image-ribbon img {
+.atmosphere-intro {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(280px, 0.68fr);
+  gap: clamp(28px, 7vw, 110px);
+  align-items: end;
+}
+
+.atmosphere-intro .micro {
+  grid-column: 1 / -1;
+  margin-bottom: -8px;
+}
+
+.atmosphere-intro h2 {
+  font-size: clamp(46px, 6vw, 96px);
+}
+
+.atmosphere-intro p {
+  max-width: 520px;
+}
+
+.atmosphere-grid {
+  display: grid;
+  grid-template-columns: 0.86fr 1.08fr 0.82fr 0.9fr;
+  align-items: end;
+  gap: clamp(14px, 2vw, 28px);
+  width: min(1500px, calc(100% - 44px));
+  margin: 0 auto;
+}
+
+.atmosphere-card {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.atmosphere-card img {
   width: 100%;
   height: clamp(250px, 32vw, 520px);
   object-fit: cover;
 }
 
-.image-ribbon img:nth-child(2),
-.image-ribbon img:nth-child(4) {
+.atmosphere-card-tall img {
   height: clamp(360px, 46vw, 720px);
 }
 
-.image-ribbon img:nth-child(3) {
+.atmosphere-card:nth-child(3) {
   align-self: start;
+}
+
+.atmosphere-card figcaption {
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .contact-stage {
@@ -1002,27 +1086,53 @@ blockquote {
 
 .footer {
   display: grid;
-  grid-template-columns: minmax(180px, 280px) 1fr auto;
-  align-items: center;
-  gap: clamp(18px, 4vw, 60px);
+  grid-template-columns: minmax(180px, 260px) minmax(220px, 1fr) minmax(220px, 0.8fr) auto;
+  align-items: start;
+  gap: clamp(24px, 5vw, 76px);
   width: min(1380px, calc(100% - 44px));
   margin: 0 auto;
   padding: clamp(36px, 7vw, 82px) 0;
   border-top: 1px solid var(--line);
 }
 
-.footer img {
-  width: 100%;
+.footer-brand {
+  display: grid;
+  gap: 18px;
 }
 
-.footer p {
+.footer-brand img {
+  width: min(210px, 100%);
+}
+
+.footer-brand p,
+.footer-address {
   margin-bottom: 0;
+  color: var(--muted);
+  font-family: var(--font-text);
+  font-size: clamp(16px, 1.2vw, 20px);
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.42;
 }
 
-.footer a {
+.footer-contact,
+.footer-links {
+  display: grid;
+  gap: 10px;
+}
+
+.footer-contact a,
+.footer-links a {
   color: var(--forest);
-  font-weight: 850;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
+}
+
+.footer-contact a {
+  text-transform: none;
+  overflow-wrap: anywhere;
 }
 
 .reveal-block,
@@ -1032,7 +1142,7 @@ blockquote {
 .split-media,
 .broken-large,
 .broken-small,
-.image-ribbon img,
+.atmosphere-card img,
 .contact-map video,
 .contact-map iframe,
 .quote-video {
@@ -1064,8 +1174,9 @@ blockquote {
 
 @media (max-width: 980px) {
   .site-nav {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr;
     min-height: 78px;
+    gap: 8px;
   }
 
   .nav-links {
@@ -1075,9 +1186,18 @@ blockquote {
     padding-bottom: 4px;
   }
 
+  .nav-meta {
+    justify-content: flex-start;
+  }
+
+  .nav-contact-panel {
+    right: auto;
+    left: 0;
+  }
+
   .scroll-gallery,
   .split-story,
-  .hover-preview .section-shell,
+  .rooms-layout,
   .contact-stage {
     grid-template-columns: 1fr;
   }
@@ -1151,20 +1271,25 @@ blockquote {
     grid-template-columns: 1fr;
   }
 
-  .hover-heading h2 {
+  .rooms-heading {
     position: relative;
     top: auto;
   }
 
-  .hover-image {
-    display: none;
+  .rooms-gallery {
+    margin-top: 8px;
+  }
+
+  .rooms-showcase {
+    padding-top: clamp(190px, 26vw, 260px);
   }
 
   .broken-grid {
     grid-template-columns: 1fr;
   }
 
-  .image-ribbon {
+  .atmosphere-intro,
+  .atmosphere-grid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -1192,15 +1317,16 @@ blockquote {
     font-size: 12px;
   }
 
-  .nav-call {
+  .nav-contact summary {
     min-width: 58px;
-    padding-inline: 12px !important;
+    padding-inline: 12px;
   }
 
   .section-shell,
   .hero-content,
   .scroll-gallery,
   .split-story,
+  .rooms-layout,
   .broken-grid,
   .contact-stage,
   .footer {
@@ -1277,17 +1403,14 @@ blockquote {
     grid-template-columns: 1fr;
   }
 
-  .hover-list a {
-    grid-template-columns: 54px 1fr;
-    min-height: 96px;
-    font-size: clamp(34px, 11vw, 58px);
+  .rooms-gallery,
+  .atmosphere-intro,
+  .atmosphere-grid {
+    grid-template-columns: 1fr;
   }
 
   .footer {
     grid-template-columns: 1fr;
   }
 
-  .image-ribbon {
-    grid-template-columns: 1fr;
-  }
 }

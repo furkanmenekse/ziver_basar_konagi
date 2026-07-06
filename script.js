@@ -5,11 +5,9 @@ const revealBlocks = document.querySelectorAll(".reveal-block");
 const motionVideos = document.querySelectorAll("video[autoplay]");
 const gallerySteps = document.querySelectorAll("[data-gallery-step]");
 const galleryImages = document.querySelectorAll("[data-gallery-image]");
-const hoverList = document.querySelector("[data-hover-list]");
-const hoverImage = document.querySelector("[data-hover-image]");
 const experienceSliders = document.querySelectorAll("[data-experience-slider]");
 const driftItems = document.querySelectorAll(
-  ".hero-content, .split-media, .broken-large, .broken-small, .image-ribbon img, .contact-map video, .contact-map iframe, .quote-video"
+  ".hero-content, .split-media, .broken-large, .broken-small, .atmosphere-card img, .contact-map video, .contact-map iframe, .quote-video"
 );
 
 body.classList.add("is-loading", "nav-dark");
@@ -114,24 +112,6 @@ if ("IntersectionObserver" in window) {
 
 document.addEventListener("DOMContentLoaded", () => window.setTimeout(updateNavThemeFromPoint, 360), { once: true });
 window.addEventListener("hashchange", () => window.setTimeout(updateNavThemeFromPoint, 180));
-
-if (hoverList && hoverImage) {
-  hoverList.addEventListener("pointermove", (event) => {
-    if (event.target instanceof HTMLElement) {
-      const item = event.target.closest("[data-preview]");
-      if (!item) return;
-
-      hoverImage.src = item.dataset.preview;
-      hoverImage.classList.add("is-visible");
-      hoverImage.style.left = `${event.clientX}px`;
-      hoverImage.style.top = `${event.clientY}px`;
-    }
-  });
-
-  hoverList.addEventListener("pointerleave", () => {
-    hoverImage.classList.remove("is-visible");
-  });
-}
 
 experienceSliders.forEach((slider) => {
   const track = slider.querySelector("[data-slider-track]");

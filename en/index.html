@@ -36,7 +36,14 @@
       <div class="nav-meta">
         <a href="../index.html">TR</a>
         <a href="index.html" aria-current="page">EN</a>
-        <a class="nav-call" href="tel:+905337473300">Call</a>
+        <details class="nav-contact">
+          <summary>Contact</summary>
+          <div class="nav-contact-panel" aria-label="Contact options">
+            <a href="tel:+905337473300">Call</a>
+            <a href="https://wa.me/905337473300">WhatsApp</a>
+            <a href="mailto:info@ziverbasarkonagi.com">Mail</a>
+          </div>
+        </details>
       </div>
     </header>
 
@@ -147,31 +154,34 @@
         </div>
       </section>
 
-      <section id="odalar" class="hover-preview scene dark-section" data-theme="dark">
-        <div class="section-shell">
-          <div class="hover-heading">
+      <section id="odalar" class="rooms-showcase scene dark-section" data-theme="dark">
+        <div class="section-shell rooms-layout">
+          <div class="rooms-heading">
             <p class="micro">Rooms</p>
-            <h2>Share your dates, guest count, and room needs; we will clarify the right stay.</h2>
+            <h2>Look at the room atmosphere before choosing your stay.</h2>
+            <p>
+              Warm timber, quiet textiles, and highland stillness shape the
+              character of the rooms.
+            </p>
           </div>
-          <div class="hover-list" data-hover-list>
-            <a href="https://wa.me/905337473300" data-preview="../assets/stock/cozy-bed.jpg">
-              <span>01</span>
-              Standard stay
-            </a>
-            <a href="https://wa.me/905337473300" data-preview="../assets/stock/hotel-room.jpg">
-              <span>02</span>
-              Family and group options
-            </a>
-            <a href="https://wa.me/905337473300" data-preview="../assets/stock/cozy-bed.jpg">
-              <span>03</span>
-              Warm room atmosphere
-            </a>
-            <a href="tel:+905337473300" data-preview="../assets/photos/night.jpeg">
-              <span>04</span>
-              Availability details
-            </a>
+          <div class="rooms-gallery" aria-label="Room images">
+            <figure class="room-card room-card-tall">
+              <img src="../assets/stock/cozy-bed.jpg" alt="Warm bedroom atmosphere" />
+              <figcaption>Soft light and a calm sleeping area</figcaption>
+            </figure>
+            <figure class="room-card">
+              <img src="../assets/stock/warm-bedroom.jpg" alt="Room seating area detail" />
+              <figcaption>A comfortable corner for the stay</figcaption>
+            </figure>
+            <figure class="room-card">
+              <img src="../assets/stock/hotel-room.jpg" alt="Bright room and resting area" />
+              <figcaption>Simple, airy, easy-to-use spaces</figcaption>
+            </figure>
+            <figure class="room-card room-card-wide">
+              <img src="../assets/stock/hotel-lobby.jpg" alt="Shared interior atmosphere" />
+              <figcaption>The warm feeling of the hotel beyond the room</figcaption>
+            </figure>
           </div>
-          <img class="hover-image" src="../assets/stock/cozy-bed.jpg" alt="" data-hover-image />
         </div>
       </section>
 
@@ -189,12 +199,33 @@
         <img class="broken-small parallax-media" src="../assets/stock/coffee-detail.jpg" alt="Coffee and table detail" />
       </section>
 
-      <section class="image-ribbon scene" data-theme="light" aria-label="Atmosphere gallery">
-        <img src="../assets/stock/highland-lake.jpg" alt="Highland lake and mountain view" />
-        <img src="../assets/photos/night.jpeg" alt="Ziver Başar Konağı night exterior" />
-        <img src="../assets/stock/table-detail.jpg" alt="Table detail" />
-        <img src="../assets/stock/hotel-lobby.jpg" alt="Hotel interior atmosphere" />
-        <img src="../assets/stock/forest-path.jpg" alt="Forest path" />
+      <section class="atmosphere-section scene" data-theme="light" aria-label="Hotel atmosphere">
+        <div class="section-shell atmosphere-intro reveal-block">
+          <p class="micro">Atmosphere</p>
+          <h2>Small scenes that complete the hotel.</h2>
+          <p>
+            The highland road, stone facade, table, and rooms come together as
+            parts of the same calm rhythm.
+          </p>
+        </div>
+        <div class="atmosphere-grid">
+          <figure class="atmosphere-card">
+            <img src="../assets/stock/highland-lake.jpg" alt="Highland lake and mountain view" />
+            <figcaption>Highland surroundings</figcaption>
+          </figure>
+          <figure class="atmosphere-card atmosphere-card-tall">
+            <img src="../assets/photos/night.jpeg" alt="Ziver Başar Konağı night exterior" />
+            <figcaption>Evening light</figcaption>
+          </figure>
+          <figure class="atmosphere-card">
+            <img src="../assets/stock/table-detail.jpg" alt="Table detail" />
+            <figcaption>Table detail</figcaption>
+          </figure>
+          <figure class="atmosphere-card atmosphere-card-tall">
+            <img src="../assets/stock/forest-path.jpg" alt="Forest path" />
+            <figcaption>Forest road</figcaption>
+          </figure>
+        </div>
       </section>
 
       <section class="quote-section scene dark-section" data-theme="dark">
@@ -202,9 +233,8 @@
           <source src="https://v3b.fal.media/files/b/0aa1157d/uxHQSfrugtvLCtugqlTe0_video.mp4" type="video/mp4" />
         </video>
         <div class="section-shell">
-          <p class="micro">Guest Feeling</p>
           <blockquote>
-            “A warm-lit highland house, close to nature and far from excess.”
+            “A warm highland house, close to nature and far from excess.”
           </blockquote>
         </div>
       </section>
@@ -235,9 +265,25 @@
     </main>
 
     <footer class="footer">
-      <img src="../assets/logos/zbk-logotype-color-2.svg" alt="Ziver Başar Konağı" />
-      <p>Kulakkaya Highland / Giresun</p>
-      <a href="#top">Top</a>
+      <div class="footer-brand">
+        <img src="../assets/logos/zbk-logotype-color-1.svg" alt="Ziver Başar Konağı" />
+        <p>Kulakkaya Highland, Giresun</p>
+      </div>
+      <address class="footer-address">
+        Kulakkaya Mahallesi, Köy İçi Mevki, No:80<br />
+        28960 Dereli / Giresun
+      </address>
+      <div class="footer-contact">
+        <a href="tel:+905337473300">+90 533 747 33 00</a>
+        <a href="https://wa.me/905337473300">WhatsApp</a>
+        <a href="mailto:info@ziverbasarkonagi.com">info@ziverbasarkonagi.com</a>
+      </div>
+      <nav class="footer-links" aria-label="Footer menu">
+        <a href="#konak">Hotel</a>
+        <a href="#odalar">Rooms</a>
+        <a href="#iletisim">Contact</a>
+        <a href="#top">Top</a>
+      </nav>
     </footer>
 
     <script src="../script.js"></script>
