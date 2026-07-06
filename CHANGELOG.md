@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.5.10 - 2026-07-06
+
+- Removed the separate Contact link from the main navigation.
+- Renamed the header action to Rezervasyon/Reservation and widened the pill for the longer label.
+
 ## v0.5.9 - 2026-07-06
 
 - Added scroll-growing cinematic image scenes to create a stronger lower-page visual effect.

@@ -192,7 +192,7 @@ body.is-ready .loader {
 }
 
 .nav-contact summary {
-  min-width: 70px;
+  min-width: 118px;
   padding: 8px 15px;
   border: 1px solid currentColor;
   border-radius: 999px;
@@ -1473,7 +1473,7 @@ blockquote {
   }
 
   .nav-contact summary {
-    min-width: 58px;
+    min-width: 106px;
     padding-inline: 12px;
   }
 
